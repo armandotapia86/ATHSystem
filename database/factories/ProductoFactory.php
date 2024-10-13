@@ -17,7 +17,11 @@ class ProductoFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            //creamos las semillas definiéndolas para cada uno de los atributos de la tabla productos.
+            'nombre' => fake()->word(),
+            'descripcion' => fake()->text(),
+            'precio' => fake()->numberBetween(10000, 500000),
+            'stock' => fake()->numberBetween(1, 50) 
         ];
     }
 }
