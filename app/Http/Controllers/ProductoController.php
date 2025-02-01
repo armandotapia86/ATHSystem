@@ -15,6 +15,10 @@ class ProductoController extends Controller
         //Recupera todos los productos de la base de datos 
         $productos = Producto::all();
 
+        // Obtiene el carrito actual de la sesión (si no existe, devuelve un arreglo vacío)
+        $carrito = session()->get('carrito', []);
+
+
         //Retorna la vista de 'Productos.index' con los productos 
         return view('productos.index', compact('productos'));
     }

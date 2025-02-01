@@ -2,7 +2,7 @@
 
 @section('titulo', 'Pagina principal')
     
-@section('contenido')
+@section('contenido')    
 
     <div class="flex justify-end m-4">
         <a href="{{ route('productos.create') }}" class="btn btn-outline">Nuevo producto</a>
@@ -24,6 +24,13 @@
                     Stock: <div class="badge badge-outline">{{ $producto->stock }}</div>
                     <div class="card-actions justify-end">
                         <a href="{{ route('productos.edit', $producto->id) }}" class="btn btn-outline btn-xs">Editar</a>
+
+                        <form action="{{ route('carrito.agregar') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="id" value="{{ $producto->id }}">
+                            <button type="submit" class="btn btn-outline btn-xs">Agregar al carrito</button>
+                        </form>
+
                         <form action="{{ route('productos.destroy', $producto->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
@@ -32,7 +39,7 @@
 
                     </div>
                 </div>
-            </div>      
+            </div>   
             
         @endforeach
     
